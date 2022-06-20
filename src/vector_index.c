@@ -80,7 +80,7 @@ IndexIterator *NewVectorIterator(QueryEvalCtx *q, VectorQuery *vq, IndexIterator
   }
   switch (vq->type) {
     case VECSIM_QT_KNN: {
-      VecSimQueryParams qParams;
+      VecSimQueryParams qParams = {0};
       int err;
       if ((err = VecSimIndex_ResolveParams(vecsim, vq->params.params, array_len(vq->params.params),
                                            &qParams)) != VecSim_OK) {
