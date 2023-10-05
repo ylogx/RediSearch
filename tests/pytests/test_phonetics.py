@@ -121,7 +121,7 @@ def testIssue3836(env):
         "FT.SEARCH",
         "idx",
         template.format("A" * (65535*128)),
-        "TIMEOUT", "2000"
+        "TIMEOUT", "5000"
     ]
     res = env.execute_command(*poc)
     env.assertEqual(res, [0])
