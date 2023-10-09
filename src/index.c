@@ -639,7 +639,7 @@ void trimUnionIterator(IndexIterator *iter, size_t offset, size_t limit, bool as
         curTotal += it->NumEstimated(it->ctx);
         if (curTotal > limit) {
           ui->num = i + 1;
-          memset(ui->its + ui->num, 0, ui->norig - ui->num); 
+          memset(ui->its + ui->num, 0, ui->norig - ui->num);
           break;
         }
       }
@@ -650,10 +650,10 @@ void trimUnionIterator(IndexIterator *iter, size_t offset, size_t limit, bool as
         if (curTotal > limit) {
           ui->num -= i;
           memmove(ui->its, ui->its + i, ui->num);
-          memset(ui->its + ui->num, 0, ui->norig - ui->num); 
+          memset(ui->its + ui->num, 0, ui->norig - ui->num);
           break;
         }
-      }  
+      }
     }
   } else {
     UI_SyncIterList(ui);
@@ -1798,7 +1798,7 @@ typedef struct {
 static int PI_Read(void *ctx, RSIndexResult **e) {
   ProfileIterator *pi = ctx;
   pi->counter++;
-  hires_clock_t t0; 
+  hires_clock_t t0;
   hires_clock_get(&t0);
   int ret = pi->child->Read(pi->child->ctx, e);
   if (ret == INDEXREAD_EOF) pi->eof = 1;
@@ -1810,7 +1810,7 @@ static int PI_Read(void *ctx, RSIndexResult **e) {
 static int PI_SkipTo(void *ctx, t_docId docId, RSIndexResult **hit) {
   ProfileIterator *pi = ctx;
   pi->counter++;
-  hires_clock_t t0; 
+  hires_clock_t t0;
   hires_clock_get(&t0);
   int ret = pi->child->SkipTo(pi->child->ctx, docId, hit);
   if (ret == INDEXREAD_EOF) pi->eof = 1;
@@ -2013,7 +2013,7 @@ void PrintIteratorChildProfile(RedisModule_Reply *reply, IndexIterator *root, si
       OptimizerIterator *oi = root->ctx;
       printProfileOptimizationType(oi);
     }
-                                                                        
+
     if (addChild) {
       RedisModule_Reply_SimpleString(reply, "Child iterator");
       printIteratorProfile(reply, child, 0, 0, depth + 1, limited, config);
